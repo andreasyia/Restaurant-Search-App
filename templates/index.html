@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Search</title>
+</head>
+<body>
+    <h1>Restaurant Search</h1>
+    <form method="post">
+        <label for="city">Enter a city:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if restaurants %}
+        <h2>Restaurants in {{ city }}</h2>
+        <ul>
+            {% for restaurant in restaurants %}
+                <li>
+                    <h3>{{ restaurant['name'] }}</h3>
+                    <p>Rating: {{ restaurant['rating'] }}</p>
+                    <p>Menu: {{ restaurant.get('menu_url', 'Not available') }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Admin link -->
+    <p><a href="/admin">Admin Page</a></p>
+</body>
+</html>

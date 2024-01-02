@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Search Query Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Search Query</th>
+                <th>Number of Times Submitted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for query, count in query_data %}
+            <tr>
+                <td>{{ query }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
