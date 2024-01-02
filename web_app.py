@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, g
-import sqlite3
-import requests
 from collections import Counter
+import requests
+import sqlite3
 
 app = Flask(__name__)
 DATABASE = 'search_queries.db'
@@ -34,7 +34,7 @@ def setup_database():
 
 # Function to fetch city coordinates using Google Geocoding API
 def get_coordinates(city):
-    # Replace 'YOUR_API_KEY' with your actual Google Geocoding API key
+ 
     api_key = 'AIzaSyBnBdyUht_amxr-OLBOzQ8MY0lvslGdHy8'
     endpoint = 'https://maps.googleapis.com/maps/api/geocode/json'
 
@@ -57,15 +57,14 @@ def fetch_google_places(city):
     if lat is None or lng is None:
         return []
 
-    # Replace 'YOUR_API_KEY' with your actual Google Places API key
     api_key = 'AIzaSyDXZZz_kqN5rM_x1nSE7SyyVzmRX4n7NVg'
     endpoint = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
     
     params = {
         'key': api_key,
         'location': f"{lat},{lng}",
-        'radius': 5000,  # Define your desired search radius in meters
-        'type': 'restaurant'  # Search for restaurants specifically
+        'radius': 5000,  
+        'type': 'restaurant'  
     }
 
     response = requests.get(endpoint, params=params)
@@ -101,7 +100,7 @@ def index():
         cursor.execute("INSERT INTO search_queries (ip_address, city) VALUES (?, ?)", (ip_address, city))
         db.commit()
 
-        # Use Google Places API to fetch restaurant data based on the city
+        # Google Places API to fetch restaurant data based on the city
         restaurant_data = fetch_google_places(city)
 
         return render_template('index.html', restaurants=restaurant_data, city=city)
@@ -125,7 +124,6 @@ def admin():
     query_data = [(query, count)for query, count in query_counts.items()]
 
     return render_template('admin.html', query_data = query_data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
