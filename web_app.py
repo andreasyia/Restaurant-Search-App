@@ -35,7 +35,7 @@ def setup_database():
 # Function to fetch city coordinates using Google Geocoding API
 def get_coordinates(city):
  
-    api_key = 'AIzaSyBnBdyUht_amxr-OLBOzQ8MY0lvslGdHy8'
+    api_key = 'GOOGLE GEOCODING API'
     endpoint = 'https://maps.googleapis.com/maps/api/geocode/json'
 
     params = {
@@ -57,7 +57,7 @@ def fetch_google_places(city):
     if lat is None or lng is None:
         return []
 
-    api_key = 'AIzaSyDXZZz_kqN5rM_x1nSE7SyyVzmRX4n7NVg'
+    api_key = 'GOOGLE PLACES API'
     endpoint = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
     
     params = {
